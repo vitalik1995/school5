@@ -45,3 +45,4 @@ abstract class AbstractExample
 }
 
 interface InterfaceExample
+{}
