@@ -18,7 +18,7 @@ class Dyller{
             return new GasDyller();
         }
         else {
-            echo "wrong type of fuel";
+            echo "wrong type of fuel k";
         }
     }
 }
