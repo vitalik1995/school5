@@ -8,6 +8,6 @@ class FightUnit
 {
     public function fight ()
     {
-        return "ATTACK!";
+        return "Attack!";
     }
 }
