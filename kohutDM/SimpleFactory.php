@@ -1,7 +1,7 @@
 <?php
 
 
-namespace school5\kohutDM\SimpleFactory;
+namespace school5\kohutDM;
 
 
 class SimpleFactory

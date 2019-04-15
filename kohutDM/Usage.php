@@ -1,9 +1,8 @@
 <?php
 
-
-namespace school5\kohutDM\SimpleFactory;
-
-use school5\kohutDM\Pool\Pool;
+use school5\kohutDM\SimpleFactory;
+use school5\kohutDM\Pool;
+use school5\kohutDM\Singleton;
 
 define('ROOT',dirname(__FILE__));
 
@@ -11,6 +10,7 @@ require (ROOT . '/SimpleFactory.php');
 require (ROOT . '/FightUnit.php');
 require (ROOT . '/Pool.php');
 require (ROOT . '/CastleGuard.php');
+require (ROOT . '/Singleton.php');
 
 /**
  * Simple Factory realization
@@ -20,6 +20,7 @@ $simpleFactory = new SimpleFactory();
 $myUnit = $simpleFactory->makeFightUnit();
 echo $myUnit->fight() . "<br/><br/>";
 echo "--------------------------------------------------";
+
 /**
  * Pool realization
  */
@@ -73,3 +74,13 @@ echo "<br/><br/>";
 
 echo "There are " . $pool->countCastleGuard() . " guardians in the castle<br/><br/>";
 echo "----------------------------------";
+
+/**
+ * Singleton realization
+ */
+echo "----------SINGLETON---------<br/><br/>";
+$key = Singleton::getInstance();
+echo $key->getCastleKey('Sim Sim open up!');
+echo "<br/>";
+var_dump($key);
+echo "<br/><br/>--------------------------------------------------";

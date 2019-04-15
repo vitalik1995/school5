@@ -1,7 +1,7 @@
 <?php
 
 
-namespace school5\kohutDM\Pool;
+namespace school5\kohutDM;
 
 
 class CastleGuard
