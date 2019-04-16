@@ -15,11 +15,15 @@ class MainExample
 
     public function __construct()
     {
+        /**
+         *
+         */
 
     }
 
     public function publicMethod($param)
     {
+
 
     }
 
