@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <helloworld_index_index>
+        <reference name="content">
+            <block type="helloworld/hello" name="helloworld.hello" template="training/helloworld/hello.phtml">
+                <block type="helloworld/first" name="helloworld.first" template="training/helloworld/first.phtml">
+                    <block type="helloworld/second" name="helloworld.second" template="training/helloworld/second.phtml"/>
+                </block>
+            </block>
+        </reference>
+        <reference name="helloworld.second">
+            <block type="helloworld/third" name="helloworld.third" template="training/helloworld/third.phtml"/>
+        </reference>
+    </helloworld_index_index>
+
+    <helloworld_index_goodbye>
+        <update handle="helloworld_index_index"/>
+        <reference name="content">
+        <block type="helloworld/goodbye" name="helloworld.goodbye" template="training/helloworld/goodbye.phtml"/>
+        </reference>
+    </helloworld_index_goodbye>
+
+    <helloworld_index_default>
+        <update handle="helloworld_index_index"/>
+        <block type="core/template" name="root" output="toHtml" template="training/helloworld/default.phtml">
+            <block type="customer/form_register" name="customer_form_register" template="customer/form/register.phtml"/>
+            <block type="helloworld/second" name="helloworld.second"  template="training/helloworld/second.phtml">
+                <action method="setName">
+                    <name>Petro</name>
+                </action>
+            </block>
+        </block>
+    </helloworld_index_default>
+</layout>

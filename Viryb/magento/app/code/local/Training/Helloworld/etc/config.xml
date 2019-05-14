@@ -14,5 +14,19 @@
                 </args>
             </helloworld>
         </routers>
+        <layout>
+            <updates>
+                <helloworld>
+                    <file>helloworld/local.xml</file>
+                </helloworld>
+            </updates>
+        </layout>
     </frontend>
+    <global>
+        <blocks>
+            <helloworld>
+                <class>Training_Helloworld_Block</class>
+            </helloworld>
+        </blocks>
+    </global>
 </config>
