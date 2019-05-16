@@ -28,5 +28,20 @@
                 <class>Training_Helloworld_Block</class>
             </helloworld>
         </blocks>
+        <models>
+            <helloworld>
+                <class>Training_Helloworld_Model</class>
+                <!--need to create our own resource, can't just use core_resource-->
+                <resourceModel>helloworld_resource</resourceModel>
+            </helloworld>
+            <helloworld_resource>
+                <class>Training_Helloworld_Model_Resource</class>
+                <entities>
+                    <blogpost>
+                        <table>blog_posts</table>
+                    </blogpost>
+                </entities>
+            </helloworld_resource>
+        </models>
     </global>
 </config>

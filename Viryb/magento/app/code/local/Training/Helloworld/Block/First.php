@@ -24,4 +24,16 @@ class Training_Helloworld_Block_First extends Mage_Core_Block_Template
     {
         return "The message from " . self::BLOCKNAME;
     }
+
+    /**
+     * Get post from registry
+     *
+     * @return mixed
+     */
+    public function getPost()
+    {
+        $post = Mage::registry('post');
+
+        return $post;
+    }
 }

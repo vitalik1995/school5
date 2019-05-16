@@ -4,9 +4,9 @@
     <helloworld_index_index>
         <reference name="content">
             <block type="helloworld/hello" name="helloworld.hello" template="training/helloworld/hello.phtml">
-                <block type="helloworld/first" name="helloworld.first" template="training/helloworld/first.phtml">
+                <!--<block type="helloworld/first" name="helloworld.first" template="training/helloworld/first.phtml">-->
                     <block type="helloworld/second" name="helloworld.second" template="training/helloworld/second.phtml"/>
-                </block>
+             <!--   </block> -->
             </block>
         </reference>
         <reference name="helloworld.second">
@@ -32,4 +32,11 @@
             </block>
         </block>
     </helloworld_index_default>
+
+    <helloworld_index_detail>
+        <reference name="content">
+            <block type="helloworld/first" name="helloworld.first" template="training/helloworld/first.phtml"/>
+        </reference>
+    </helloworld_index_detail>
+
 </layout>
