@@ -1,0 +1,6 @@
+<h1><?= $this->getPost()->getTitle();?></h1>
+
+<p><?= $this->getPost()->getContent(); ?></p>
+
+<p><a href="<?php echo $this->getEditUrl($this->getPost())?>">Edit post</a></p>
+<p><a href="<?php echo $this->getDeleteUrl($this->getPost())?>">Delete post</a></p>

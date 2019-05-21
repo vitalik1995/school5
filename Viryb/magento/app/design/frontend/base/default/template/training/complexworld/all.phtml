@@ -1,0 +1,27 @@
+<h1> All posts</h1>
+<h3><a href="/complexworld/index/create">Create post</a></h3>
+
+<?php foreach ($this->getPosts() as $post): ?>
+<h4><a href="<?php echo $this->getRowUrl($post) ?>">
+        <?php echo $post->getTitle(); ?></a></h4>
+    <?php endforeach; ?>
+
+<?php echo "<hr>";
+    $collection = $this->getPosts();
+    echo "<pre>";
+    //var_dump($collection->getFirstItem()->getData());
+    //var_dump((string)$collection->getSelect());
+    var_dump($collection->getColumnValues('title'));
+
+$collection_of_products = Mage::getModel('catalog/product')->getCollection();
+$collection_of_products->addFieldToFilter('sku', 'msj006c-Royal Blue-L');
+echo "Наша колекція зараз налічує " . count($collection_of_products) . ' позицію(й)';
+var_dump($collection_of_products->getFirstItem()->getData());
+echo "<hr>";
+var_dump(
+       (string)
+   Mage::getModel('catalog/product')
+    ->getCollection()
+    ->addFieldToFilter('sku',array(['like'=>'a%'],['like'=>'b%']))->getSelect()
+);
+?>

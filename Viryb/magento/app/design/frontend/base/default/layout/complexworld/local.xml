@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <complexworld_index_index>
+        <reference name="content">
+            <block type="complexworld/first" name="complexworld.first" template="training/complexworld/all.phtml"/>
+        </reference>
+    </complexworld_index_index>
+
+    <complexworld_index_detail>
+        <reference name="content">
+            <block type="complexworld/detail" name="complexworld.detail" template="training/complexworld/detail.phtml"/>
+        </reference>
+    </complexworld_index_detail>
+
+    <complexworld_index_edit>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="complexworld/edit" name="complexworld.form" as="complexworld_form" template="training/complexworld/edit.phtml"/>
+        </reference>
+    </complexworld_index_edit>
+
+    <complexworld_index_create>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="complexworld.form" as="complexworld_form" template="training/complexworld/create.phtml"/>
+        </reference>
+    </complexworld_index_create>
+</layout>

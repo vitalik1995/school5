@@ -1,0 +1,16 @@
+<form action="<?php echo $this->getUrl('complexworld/index/create'); ?>" id="complexworldform" method="post">
+    <ul class="form-list">
+        <li><label>Title</label><br>
+            <input class="input-text required-entry" id="title" name="title" style="width: 250px;" type="text"></li>
+
+        <li><label>Content</label><br>
+            <input class="input-text required-entry" id="content" name="content" style="width: 250px;" type="text"></li>
+
+    </ul><button class="form-button-alt" type="submit"><span>Create post</span></button>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var complexworld = new VarienForm('complexworldform', true);
+    //]]>
+</script>
+
