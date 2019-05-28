@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Training_Rewritemodule>
+            <version>0.1.0</version>
+        </Training_Rewritemodule>
+    </modules>
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <training_rewritemodule before="Mage_Customer">Training_Rewritemodule</training_rewritemodule>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+    <global>
+  <!--      <models>
+            &lt;!&ndash;Declaring our model path &ndash;&gt;
+            <rewritemodule>
+                <class>Training_Rewritemodule_Model</class>
+            </rewritemodule>
+
+            &lt;!&ndash;Rewriting model&ndash;&gt;
+            &lt;!&ndash;This is the tag that customer is using when declaring models in customer/etc/config.xml. This is the first parameter of Mage::getModel('customer/') method &ndash;&gt;
+            <customer>
+                <rewrite> &lt;!&ndash;Shows that we are rewriting a Model &ndash;&gt;
+                    &lt;!&ndash;Customer here is the second parameter of Mage::getModel(' /customer') method. This is the class after Model folder &ndash;&gt;
+                    <customer>Training_Rewritemodule_Model_Customer</customer>
+                </rewrite>
+            </customer>
+        </models>-->
+        <blocks>
+            <rewritemodule>
+                <!-- This is our Block path-->
+                <class>Training_Rewritemodule_Block</class>
+            </rewritemodule>
+
+            <customer>
+                <rewrite>
+                    <!--This is the Account folder and Dashboard.php class after Block directory from customer module -->
+                    <form_register>Training_Rewritemodule_Block_Form_Register</form_register>
+                </rewrite>
+            </customer>
+        </blocks>
+        <helpers>
+            <rewritemodule>
+                <!--Declaring our helper classes -->
+                <class>Training_Rewritemodule_Helper</class>
+            </rewritemodule>
+            <customer>
+                <!--This is the rewrite helper class.  -->
+                <rewrite>
+                    <address>Training_Rewritemodule_Helper_Address</address> <!--this tag <address> is the class after Helper folder -->
+                </rewrite>
+            </customer>
+        </helpers>
+
+    </global>
+</config>

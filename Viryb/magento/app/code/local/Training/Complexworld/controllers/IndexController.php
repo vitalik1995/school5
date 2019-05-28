@@ -15,7 +15,6 @@ class Training_Complexworld_IndexController extends Mage_Core_Controller_Front_A
      */
     public function indexAction()
     {
-
         $this->loadLayout();
         $this->renderLayout();
     }
@@ -126,5 +125,11 @@ class Training_Complexworld_IndexController extends Mage_Core_Controller_Front_A
             echo '<p>' . $entry->getContent() . '</p>';
         }
         echo '</br>Done</br>';
+    }
+
+    public function joinAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
     }
 }
