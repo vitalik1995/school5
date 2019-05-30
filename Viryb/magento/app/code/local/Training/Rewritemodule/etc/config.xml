@@ -17,21 +17,21 @@
         </routers>
     </frontend>
     <global>
-  <!--      <models>
-            &lt;!&ndash;Declaring our model path &ndash;&gt;
+        <models>
+            <!--Declaring our model path -->
             <rewritemodule>
                 <class>Training_Rewritemodule_Model</class>
             </rewritemodule>
 
-            &lt;!&ndash;Rewriting model&ndash;&gt;
-            &lt;!&ndash;This is the tag that customer is using when declaring models in customer/etc/config.xml. This is the first parameter of Mage::getModel('customer/') method &ndash;&gt;
+            <!--Rewriting model-->
+            <!--This is the tag that customer is using when declaring models in customer/etc/config.xml. This is the first parameter of Mage::getModel('customer/') method -->
             <customer>
-                <rewrite> &lt;!&ndash;Shows that we are rewriting a Model &ndash;&gt;
-                    &lt;!&ndash;Customer here is the second parameter of Mage::getModel(' /customer') method. This is the class after Model folder &ndash;&gt;
+                <rewrite> <!--Shows that we are rewriting a Model -->
+                    <!--Customer here is the second parameter of Mage::getModel(' /customer') method. This is the class after Model folder -->
                     <customer>Training_Rewritemodule_Model_Customer</customer>
                 </rewrite>
             </customer>
-        </models>-->
+        </models>
         <blocks>
             <rewritemodule>
                 <!-- This is our Block path-->
@@ -57,6 +57,16 @@
                 </rewrite>
             </customer>
         </helpers>
-
+        <events>
+            <cms_page_prepare_save>
+                <observers>
+                    <Training_Rewritemodule_Model_Observer>
+                        <type>singleton</type>
+                        <class>rewritemodule/observer</class>
+                        <method>saveCmsPageObserve</method>
+                    </Training_Rewritemodule_Model_Observer>
+                </observers>
+            </cms_page_prepare_save>
+        </events>
     </global>
 </config>

@@ -1,0 +1,29 @@
+<h1>Complexworld - Join</h1>
+
+<b><?php echo $this->getResult()->getSelect()->__toString(); ?></b>
+
+<?php foreach($this->getResult() as $post):?>
+<p><?php echo "Title: {$post->getTitle()} , Content: {$post->getContent()}, Additional: {$post->getInfo()} Author: {$post->getFirstName()}"; ?></p>
+<?php endforeach; ?>
+
+<?php
+echo "<hr>";
+echo "Join left";
+foreach($this->getLeftJoin() as $post):?>
+<p><?php echo "Title: {$post->getTitle()} , Content: {$post->getContent()}, Additional: {$post->getInfo()} Author: {$post->getFirstName()}"; ?></p>
+<?php endforeach;
+echo "<hr>";
+echo "Join right";
+foreach($this->getRightJoin() as $post):?>
+<p><?php echo "Title: {$post->getTitle()} , Content: {$post->getContent()}, Additional: {$post->getInfo()} Author: {$post->getFirstName()}"; ?></p>
+<?php endforeach;
+echo "<hr>";
+echo "Join field";
+foreach($this->getJoinField() as $post):?>
+    <p><?php echo "Title: {$post->getTitle()} , Content: {$post->getContent()}, Additional: {$post->getInfo()} Author: {$post->getFirstName()}"; ?></p>
+<?php endforeach;
+
+
+
+
+

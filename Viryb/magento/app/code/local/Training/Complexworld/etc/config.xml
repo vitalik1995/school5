@@ -50,5 +50,25 @@
                 </setup>
             </complexworld_setup>
         </resources>
+        <events>
+            <complexworld_eavblogpost_load_after>
+                <observers>
+                    <Training_Complexworld_Model_Observer>
+                        <type>singleton</type>
+                        <class>complexworld/observer</class>
+                        <method>changeContentAfterLoad</method>
+                    </Training_Complexworld_Model_Observer>
+                </observers>
+            </complexworld_eavblogpost_load_after>
+            <complexworld_eavblogpost_save_before>
+                <observers>
+                    <Training_Complexworld_Model_ObserverSaveBefore>
+                        <type>singleton</type>
+                        <class>complexworld/observerSaveBefore</class>
+                        <method>changeTitleSaveBefore</method>
+                    </Training_Complexworld_Model_ObserverSaveBefore>
+                </observers>
+            </complexworld_eavblogpost_save_before>
+        </events>
     </global>
 </config>
