@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <complexworld module="complexworld" translate="title">
+            <title>Complexworld</title>
+            <sort_order>71</sort_order>
+            <children>
+                <complexworld module="complexworld" translate="title">
+                    <title>Manage Posts</title>
+                    <sort_order>0</sort_order>
+                    <action>complexworldadmin/adminhtml_complexworld</action>
+                </complexworld>
+                <settings module="complexworld" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/complexworld</action>
+                </settings>
+            </children>
+        </complexworld>
+    </menu>
+
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <complexworld module="complexworld" translate="title">
+                                        <title>Complexworld</title>
+                                        <sort_order>71</sort_order>
+                                    </complexworld>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <complexworld module="complexworld" translate="title">
+                        <title>Complexworld</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <complexworld module="complexworld" translate="title">
+                                <title>Manage Posts</title>
+                                <sort_order>0</sort_order>
+                            </complexworld>
+                            <settings module="complexworld" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </complexworld>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
