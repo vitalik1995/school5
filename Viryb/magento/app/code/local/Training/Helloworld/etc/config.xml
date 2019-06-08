@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Training_Helloworld>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </Training_Helloworld>
     </modules>
     <frontend>
@@ -22,6 +22,29 @@
             </updates>
         </layout>
     </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Training_Helloworld before="Mage_Adminhtml">Training_Helloworld_Adminhtml</Training_Helloworld>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <helloworld>
+                    <file>helloworld/layout.xml</file>
+                </helloworld>
+            </updates>
+        </layout>
+    </adminhtml>
+
     <global>
         <blocks>
             <helloworld>
@@ -43,5 +66,18 @@
                 </entities>
             </helloworld_resource>
         </models>
+        <resources>
+            <helloworld_setup>
+                <setup>
+                    <module>Training_Helloworld</module>
+                    <class>Training_Helloworld_Model_Resource_Setup</class>
+                </setup>
+            </helloworld_setup>
+        </resources>
+        <helpers>
+            <helloworld>
+                <class>Training_Helloworld_Helper</class>
+            </helloworld>
+        </helpers>
     </global>
 </config>

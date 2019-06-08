@@ -18,18 +18,27 @@ class Training_Helloworld_IndexController extends Mage_Core_Controller_Front_Act
         $this->renderLayout();
     }
 
+    /**
+     * Goodbye action
+     */
     public function goodbyeAction()
     {
         $this->loadLayout();
         $this->renderLayout();
     }
 
+    /**
+     * Default action
+     */
     public function defaultAction()
     {
         $this->loadLayout();
         $this->renderLayout();
     }
 
+    /**
+     * @throws Mage_Core_Exception
+     */
     public function detailAction()
     {
         $id = $this->getRequest()->getParam('id');
@@ -65,5 +74,6 @@ class Training_Helloworld_IndexController extends Mage_Core_Controller_Front_Act
         $blogpost->delete();
         echo 'post removed';
     }
+
 
 }
