@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_eav_index>
+        <reference name="content">
+            <!-- We also reference our block by namespacename_modulename/adminhtml_controllername, and name it uniquely -->
+            <block type="training_eavgrid/adminhtml_eav" name="training_eavgrid_eav" />
+        </reference>
+    </adminhtml_eav_index>
+</layout>

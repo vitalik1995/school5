@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Training_Eavgrid>
+            <version>0.1.0</version>
+        </Training_Eavgrid>
+    </modules>
+
+    <global>
+        <helpers>
+            <training_eavgrid>
+                <!-- This is where we define our helper directory -->
+                <class>Training_Eavgrid_Helper</class>
+            </training_eavgrid>
+        </helpers>
+        <blocks>
+            <training_eavgrid>
+                <!-- Set a block definition and lookup directory -->
+                <class>Training_Eavgrid_Block</class>
+            </training_eavgrid>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Training_Eavgrid before="Mage_Adminhtml">Training_Eavgrid_Adminhtml</Training_Eavgrid>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <training_eavgrid>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>training/eav.xml</file>
+                </training_eavgrid>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
