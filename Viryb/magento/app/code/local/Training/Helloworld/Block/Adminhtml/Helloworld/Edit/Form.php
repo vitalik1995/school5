@@ -53,6 +53,13 @@ class Training_Helloworld_Block_Adminhtml_Helloworld_Edit_Form extends Mage_Admi
             'title'  => Mage::helper('checkout')->__('Title'),
         ));
 
+        $fieldset->addField('select', 'select', array(
+            'label'     => Mage::helper('checkout')->__('Status'),
+            'required'  => true,
+            'name'      => 'status',
+            'values' => array('1' => 'Enable','0' => 'Disable')
+        ));
+
         $fieldset->addField('post', 'text', array(
             'name'   => 'post',
             'label'  => Mage::helper('checkout')->__('Post'),

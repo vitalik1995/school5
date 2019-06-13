@@ -17,12 +17,21 @@ class Training_Helloworld_Adminhtml_HelloworldController extends Mage_Adminhtml_
             ->renderLayout();
     }
 
+    /**
+     * Create new post
+     */
     public function newAction()
     {
         // We just forward the new action to a blank edit form
         $this->_forward('edit');
     }
 
+    /**
+     * Edit post
+     *
+     * @throws Mage_Core_Exception
+     * @throws Varien_Exception
+     */
     public function editAction()
     {
         $this->_initAction();
@@ -59,6 +68,11 @@ class Training_Helloworld_Adminhtml_HelloworldController extends Mage_Adminhtml_
             ->renderLayout();
     }
 
+    /**
+     * Save post after edit
+     *
+     * @throws Varien_Exception
+     */
     public function saveAction()
     {
         if ($postData = $this->getRequest()->getPost()) {
@@ -106,6 +120,92 @@ class Training_Helloworld_Adminhtml_HelloworldController extends Mage_Adminhtml_
         echo $data->getContent();
     }
 
+    /**
+     * @throws Varien_Exception
+     */
+    public function massDeleteAction()
+    {
+        $postIds = $this->getRequest()->getParam('helloworld');
+        if (!is_array($postIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')
+                ->__('Please select item(s)'));
+        } else {
+            try {
+                $postCollection = Mage::getResourceModel('helloworld/blogpost_collection')
+                    ->addFieldToFilter('blogpost_id', array('in'=>$postIds));
+                foreach ($postCollection as $post) {
+                    $post->delete();
+                }
+                /*foreach ($postIds as $postId) {
+                    $post = Mage::getModel('helloworld/blogpost')->load($postId);
+                    $post->delete();*/
+
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('adminhtml')->__('Total of %d record(s) were successfully deleted', count($postIds)));
+
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * @throws Varien_Exception
+     */
+    public function massStatusAction()
+    {
+        $postIds = $this->getRequest()->getParam('helloworld');
+        if (!is_array($postIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')
+                ->__('Please select item(s)'));
+        } else {
+            try {
+                $postCollection = Mage::getResourceModel('helloworld/blogpost_collection')
+                    ->addFieldToFilter('blogpost_id', array('in' => $postIds));
+                foreach ($postCollection as $post) {
+                    $post->load($post->getId())
+                        ->setStatus(intval($this->getRequest()->getParam('status')))
+                        ->setIsMassupdate(true)
+                        ->save();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d record(s) were successfully updated', count($postIds))
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * @throws Varien_Exception
+     */
+    public function exportCsvAction()
+    {
+        $fileName = 'post.csv';
+        $content = $this->getLayout()
+            ->createBlock('helloworld/adminhtml_helloworld_grid')->getCsv();
+        $this->_prepareDownloadResponse($fileName, $content);
+    }
+
+    /**
+     * @throws Varien_Exception
+     */
+    public function exportXmlAction()
+    {
+        $fileName = 'post.xml';
+        $content = $this->getLayout()
+            ->createBlock('helloworld/adminhtml_helloworld_grid')->getXml();
+        $this->_prepareDownloadResponse($fileName, $content);
+    }
+
+    /**
+     * Set active menu item
+     *
+     * @return $this
+     */
     protected function _initAction()
     {
         $this->loadLayout()
@@ -118,6 +218,10 @@ class Training_Helloworld_Adminhtml_HelloworldController extends Mage_Adminhtml_
         return $this;
     }
 
+    /**
+     * @return mixed
+     * @throws Varien_Exception
+     */
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('helloworld/helloworld');

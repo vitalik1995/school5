@@ -34,6 +34,10 @@ class Training_Helloworld_Block_Adminhtml_Helloworld_Grid extends Mage_Adminhtml
         return parent::_prepareCollection();
     }
 
+    /**
+     * @return $this
+     * @throws Exception
+     */
     protected function _prepareColumns()
     {
         $this->addColumn('blogpost_id',
@@ -74,8 +78,51 @@ class Training_Helloworld_Block_Adminhtml_Helloworld_Grid extends Mage_Adminhtml
                 'index' => 'additional'
             )
         );
+        $this->addColumn('status', array(
+            'header'    => Mage::helper('helloworld')->__('Status'),
+            'index'     => 'status',
+            'type'      => 'options',
+            'options'   => array(
+                1 => 'Enabled',
+                0 => 'Disabled',
+            )
+        ));
+
+        $this->addExportType('*/*/exportCsv', Mage::helper('helloworld')->__('CSV'));
+        $this->addExportType('*/*/exportXml', Mage::helper('helloworld')->__('XML'));
 
         return parent::_prepareColumns();
+    }
+
+    protected function _prepareMassaction()
+    {
+        //return parent::_prepareMassaction();
+
+        $this->setMassactionIdField('helloworld_id');
+        $this->getMassactionBlock()->setFormFieldName('helloworld');
+        $this->getMassactionBlock()->addItem('delete', array(
+            'label' => Mage::helper('helloworld')->__('Delete'),
+            'url' => $this->getUrl('*/*/massDelete'),
+            'confirm' => Mage::helper('helloworld')->__('Are you sure?')
+        ));
+        $statuses = Mage::getSingleton('helloworld/status')->getOptionArray();
+
+        array_unshift($statuses, array('label' => '', 'value' => ''));
+        $this->getMassactionBlock()->addItem('status', array(
+            'label' => Mage::helper('helloworld')->__('Change status'),
+            'url' => $this->getUrl('*/*/massStatus',
+                array('_current' => true)),
+            'additional' => array(
+                'visibility' => array(
+                    'name' => 'status',
+                    'type' => 'select',
+                    'class' => 'required-entry',
+                    'label' => Mage::helper('helloworld')->__('Status'),
+                    'values' => $statuses
+                ))
+        ));
+
+        return $this;
     }
 
     public function getRowUrl($row)

@@ -14,4 +14,5 @@ class Training_Helloworld_Model_Resource_Blogpost_Collection extends Mage_Core_M
     {
         $this->_init('helloworld/blogpost');
     }
+
 }
