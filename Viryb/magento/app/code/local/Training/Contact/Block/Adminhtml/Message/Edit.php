@@ -19,8 +19,7 @@ class Training_Contact_Block_Adminhtml_Message_Edit extends Mage_Adminhtml_Block
 
 
         parent::__construct();
-        $confirmationMessage = $coreHelper->jsQuoteEscape(
-            Mage::helper('sales')->__('Are you sure? This order will be canceled and a new one will be created instead'));
+        
         $this->_updateButton('save', 'label', $this->__('Save Message'));
         $this->_updateButton('delete', 'label', $this->__('Delete Message'));
         $this->addButton('send_notification', array(
