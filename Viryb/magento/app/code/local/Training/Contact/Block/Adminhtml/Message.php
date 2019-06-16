@@ -17,5 +17,8 @@ class Training_Contact_Block_Adminhtml_Message extends Mage_Adminhtml_Block_Widg
         $this->_headerText = $this->__("Contact");
 
         parent::__construct();
+        
+        $this->removeButton('add');
+
     }
 }
