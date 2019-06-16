@@ -1,0 +1,82 @@
+<config>
+    <modules>
+        <Training_Contact>
+            <version>0.1.0</version>
+        </Training_Contact>
+    </modules>
+
+    <frontend>
+        <routers>
+            <contacts>
+                <args>
+                    <modules>
+                        <training_contact before="Mage_Contacts">Training_Contact</training_contact>
+                    </modules>
+                </args>
+            </contacts>
+        </routers>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <training_contact before="Mage_Adminhtml">Training_Contact_Adminhtml</training_contact>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <contact>
+                    <file>contact/layout.xml</file>
+                </contact>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+
+        <blocks>
+            <contact>
+                <!-- Set a block definition and lookup directory -->
+                <class>Training_Contact_Block</class>
+            </contact>
+        </blocks>
+
+        <models>
+            <contact>
+                <class>Training_Contact_Model</class>
+                <!--need to create our own resource, can't just use core_resource-->
+                <resourceModel>contact_resource</resourceModel>
+            </contact>
+            <contact_resource>
+                <class>Training_Contact_Model_Resource</class>
+                <entities>
+                    <message>
+                        <table>custom_contact</table>
+                    </message>
+                </entities>
+            </contact_resource>
+        </models>
+        <resources>
+
+        <contact_setup>
+            <setup>
+                <module>Training_Contact</module>
+                <class>Training_Contact_Model_Resource_Setup</class>
+            </setup>
+        </contact_setup>
+        </resources>
+        <helpers>
+            <contact>
+                <class>Training_Contact_Helper</class>
+            </contact>
+        </helpers>
+    </global>
+</config>
