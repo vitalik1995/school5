@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Training_Luxurytax>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Training_Luxurytax>
+    </modules>
+</config>

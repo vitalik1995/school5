@@ -1,0 +1,55 @@
+<config>
+    <tabs>
+        <luxurytaxconfig translate="label" module="luxurytax">
+            <label>Luxury tax</label>
+            <sort_order>1</sort_order>
+        </luxurytaxconfig>
+    </tabs>
+    <sections>
+        <luxurytax translate="label" module="luxurytax">
+            <label>Luxury Tax Configuration</label>
+            <tab>luxurytaxconfig</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <luxurytax_group translate="label">
+                    <label>Fields</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <luxurytax_fetch_bool translate="label">
+                            <label>Enable Luxury Tax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </luxurytax_fetch_bool>
+                        <luxurytax_luxury_tax_amount>
+                            <label>Luxury Amount:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </luxurytax_luxury_tax_amount>
+                        <luxurytax_price>
+                            <label>Apply Luxury Tax from:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </luxurytax_price>
+                    </fields>
+                </luxurytax_group>
+            </groups>
+        </luxurytax>
+    </sections>
+</config>

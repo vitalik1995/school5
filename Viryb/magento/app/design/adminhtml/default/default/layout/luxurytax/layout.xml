@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<layout version="1.0.0">
+    <luxurytax_order_total>
+        <reference name="order_totals">
+            <block type="luxurytax/total_luxurytax_luxurytax" name="total_luxurytax"/>
+        </reference>
+    </luxurytax_order_total>
+    <luxurytax_invoice_total>
+        <reference name="invoice_totals">
+            <block type="luxurytax/total_luxurytax_luxurytax" name="total_luxurytax"/>
+        </reference>
+    </luxurytax_invoice_total>
+    <luxurytax_creditmemo_total>
+        <reference name="creditmemo_totals">
+            <block type="luxurytax/total_luxurytax_luxurytax" name="total_luxurytax"/>
+        </reference>
+    </luxurytax_creditmemo_total>
+
+    <adminhtml_sales_order_view>
+        <update handle="luxurytax_order_total"/>
+    </adminhtml_sales_order_view>
+    <adminhtml_sales_order_invoice_new>
+        <update handle="luxurytax_invoice_total"/>
+    </adminhtml_sales_order_invoice_new>
+    <adminhtml_sales_order_invoice_updateqty>
+        <update handle="luxurytax_invoice_total"/>
+    </adminhtml_sales_order_invoice_updateqty>
+    <adminhtml_sales_order_invoice_view>
+        <update handle="luxurytax_invoice_total"/>
+    </adminhtml_sales_order_invoice_view>
+    <adminhtml_sales_order_creditmemo_new>
+        <update handle="luxurytax_creditmemo_total"/>
+    </adminhtml_sales_order_creditmemo_new>
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <update handle="luxurytax_creditmemo_total"/>
+    </adminhtml_sales_order_creditmemo_updateqty>
+    <adminhtml_sales_order_creditmemo_view>
+        <update handle="luxurytax_creditmemo_total"/>
+    </adminhtml_sales_order_creditmemo_view>
+</layout>

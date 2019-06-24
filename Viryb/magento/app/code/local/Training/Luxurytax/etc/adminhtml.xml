@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--Declares Access Controll List for the module-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <luxurytax>
+                                        <title>Lyxury Tax</title>
+                                    </luxurytax>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
