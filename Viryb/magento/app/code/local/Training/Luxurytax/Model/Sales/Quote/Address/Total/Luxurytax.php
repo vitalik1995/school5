@@ -10,9 +10,6 @@
 
 class Training_Luxurytax_Model_Sales_Quote_Address_Total_Luxurytax extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
-    const LUXURY_TAX_BASE = 10;
-    const MIN_PRICE_BASE = 200;
-
 
     /**
      * Training_Luxurytax_Model_Sales_Quote_Address_Total_Luxurytax constructor.
