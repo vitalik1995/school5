@@ -21,7 +21,6 @@
         <routers>
             <adminhtml>
                 <args>
-                    <!-- This is how we load our Adminhtml controllers -->
                     <modules>
                         <training_contact before="Mage_Adminhtml">Training_Contact_Adminhtml</training_contact>
                     </modules>
@@ -44,7 +43,6 @@
 
         <blocks>
             <contact>
-                <!-- Set a block definition and lookup directory -->
                 <class>Training_Contact_Block</class>
             </contact>
         </blocks>
@@ -52,7 +50,6 @@
         <models>
             <contact>
                 <class>Training_Contact_Model</class>
-                <!--need to create our own resource, can't just use core_resource-->
                 <resourceModel>contact_resource</resourceModel>
             </contact>
             <contact_resource>
@@ -69,7 +66,6 @@
         <contact_setup>
             <setup>
                 <module>Training_Contact</module>
-                <class>Training_Contact_Model_Resource_Setup</class>
             </setup>
         </contact_setup>
         </resources>

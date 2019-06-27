@@ -29,16 +29,17 @@ class Training_Luxurytax_Block_Total_Luxurytax_Luxurytax extends Mage_Sales_Bloc
      */
     public function initTotals()
     {
-        $order = $this->getSource();
-        if ($order->getLuxuryTaxAmount() > 0){
+        $source = $this->getSource();
+        if ($source->getLuxuryTaxAmount() > 0) {
             $this->getParentBlock()->addTotal(
                 new Varien_Object(array(
                 'code' => 'luxury_tax',
-                'value' => $order->getLuxuryTaxAmount(),
-                'base_value' => $order->getBaseLuxuryTaxAmount(),
+                'value' => $source->getLuxuryTaxAmount(),
+                'base_value' => $source->getBaseLuxuryTaxAmount(),
                 'label' => $this->__('Luxury Tax'),
             )),'subtotal');
         }
+
         return $this;
     }
 }

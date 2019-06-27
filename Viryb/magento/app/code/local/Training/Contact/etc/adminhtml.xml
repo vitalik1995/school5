@@ -7,7 +7,6 @@
                     <title>Contact</title>
                     <sort_order>400</sort_order>
 
-                    <!--The action composed by frontname/controller/action-->
                     <action>adminhtml/message/index</action>
                 </training_contact>
             </children>
@@ -18,10 +17,8 @@
         <resources>
             <admin>
                 <children>
-                    <!-- This is for the System option of the Backend Menu -->
                     <helloworld>
                         <children>
-                            <!-- This is the module identifier we used above-->
                             <training_contact>
                                 <title>Contact</title>
                             </training_contact>

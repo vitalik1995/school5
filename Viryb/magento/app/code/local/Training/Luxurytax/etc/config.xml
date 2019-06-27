@@ -34,7 +34,6 @@
             <luxurytax_setup>
                 <setup>
                     <module>Training_Luxurytax</module>
-                    <class>Training_Luxurytax_Model_Resource_Setup</class>
                 </setup>
             </luxurytax_setup>
         </resources>

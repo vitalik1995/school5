@@ -10,6 +10,9 @@
 
 class Training_Contact_Block_Adminhtml_Message_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
+    /**
+     * Training_Contact_Block_Adminhtml_Message_Grid constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -22,11 +25,21 @@ class Training_Contact_Block_Adminhtml_Message_Grid extends Mage_Adminhtml_Block
 
     }
 
+    /**
+     * Get collection class
+     *
+     * @return string
+     */
     protected function _getCollectionClass()
     {
         return 'contact/message_collection';
     }
 
+    /**
+     * Prepare collection
+     *
+     * @return Mage_Adminhtml_Block_Widget_Grid
+     */
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
@@ -36,6 +49,8 @@ class Training_Contact_Block_Adminhtml_Message_Grid extends Mage_Adminhtml_Block
     }
 
     /**
+     * Prepare columns
+     *
      * @return $this
      * @throws Exception
      */
@@ -78,6 +93,12 @@ class Training_Contact_Block_Adminhtml_Message_Grid extends Mage_Adminhtml_Block
         return parent::_prepareColumns();
     }
 
+    /**
+     * Prepare massaction
+     *
+     * @return $this|Mage_Adminhtml_Block_Widget_Grid
+     * @throws Varien_Exception
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('contact_id');
@@ -108,9 +129,14 @@ class Training_Contact_Block_Adminhtml_Message_Grid extends Mage_Adminhtml_Block
     }
 
 
+    /**
+     * Get row url for redirect
+     *
+     * @param $row
+     * @return string
+     */
     public function getRowUrl($row)
     {
-        // This is where our row data will link to
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));
     }
 }

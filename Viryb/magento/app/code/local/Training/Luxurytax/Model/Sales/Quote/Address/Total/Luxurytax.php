@@ -10,15 +10,6 @@
 
 class Training_Luxurytax_Model_Sales_Quote_Address_Total_Luxurytax extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
-
-    /**
-     * Training_Luxurytax_Model_Sales_Quote_Address_Total_Luxurytax constructor.
-     */
-    public function __construct()
-    {
-         $this->setCode('luxury_tax');
-    }
-
     /**
      * Get label
      *
@@ -112,7 +103,7 @@ class Training_Luxurytax_Model_Sales_Quote_Address_Total_Luxurytax extends Mage_
     {
         $luxuryTaxAmount = $address->getLuxuryTaxAmount();
 
-        if ($address->getAddressType() !== 'billing' && $luxuryTaxAmount > 0){
+        if ($luxuryTaxAmount > 0) {
             $address->addTotal(array(
                 'code' => $this->getCode(),
                 'title' => $this->getLabel(),

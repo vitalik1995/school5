@@ -8,15 +8,20 @@
  * @copyright 2019 Smile
  */
 
-require_once(Mage::getModuleDir('controllers','Mage_Contacts').DS.'IndexController.php');
+require_once(Mage::getModuleDir('controllers', 'Mage_Contacts') . DS . 'IndexController.php');
 
 class Training_Contact_IndexController extends Mage_Contacts_IndexController
 {
 
+    /**
+     * Get data from form and save it to table
+     *
+     * @throws Varien_Exception
+     */
     public function postAction()
     {
         $post = $this->getRequest()->getPost();
-        if ( $post ) {
+        if ($post) {
             $translate = Mage::getSingleton('core/translate');
             /* @var $translate Mage_Core_Model_Translate */
             $translate->setTranslateInline(false);
@@ -26,11 +31,11 @@ class Training_Contact_IndexController extends Mage_Contacts_IndexController
 
                 $error = false;
 
-                if (!Zend_Validate::is(trim($post['name']) , 'NotEmpty')) {
+                if (!Zend_Validate::is(trim($post['name']), 'NotEmpty')) {
                     $error = true;
                 }
 
-                if (!Zend_Validate::is(trim($post['comment']) , 'NotEmpty')) {
+                if (!Zend_Validate::is(trim($post['comment']), 'NotEmpty')) {
                     $error = true;
                 }
 

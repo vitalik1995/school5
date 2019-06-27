@@ -10,24 +10,22 @@
 
 class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * const for change status
+     */
+    const STATUS = 1;
+
+    /**
+     * Index action
+     */
     public function indexAction()
     {
-        // Let's call our initAction method which will set some basic params for each action
         $this->_initAction()
             ->renderLayout();
     }
 
     /**
-     * Create new post
-     */
-    public function newAction()
-    {
-        // We just forward the new action to a blank edit form
-        $this->_forward('edit');
-    }
-
-    /**
-     * Edit post
+     * Edit message
      *
      * @throws Mage_Core_Exception
      * @throws Varien_Exception
@@ -35,16 +33,13 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     public function editAction()
     {
         $this->_initAction();
-        // Get id if available
 
         $id = $this->getRequest()->getParam('id');
         $model = Mage::getModel('contact/message');
 
         if ($id) {
-            // Load record
             $model->load($id);
 
-            //Check id record is loaded
             if (!$model->getId()) {
                 Mage::getSingleton('adminhtml/session')->addError($this->__('This post no longer exists'));
                 $this->_redirect('*/*/');
@@ -56,6 +51,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
         $this->_title($model->getId() ? $model->getTitle() : $this->__('New Post'));
 
         $data = Mage::getSingleton('adminhtml/session')->getContactData(true);
+
         if (!empty($data)) {
             $model->setData($data);
         }
@@ -69,7 +65,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     }
 
     /**
-     * Save post after edit
+     * Save message after edit
      *
      * @throws Varien_Exception
      */
@@ -86,6 +82,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
                 $this->_redirect('*/*/');
 
                 return;
+
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             } catch (Exception $e) {
@@ -97,6 +94,11 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
         }
     }
 
+    /**
+     * Delete message
+     *
+     * @throws Varien_Exception
+     */
     public function deleteAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {
@@ -108,6 +110,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
                 $this->_redirect('*/*/');
 
                 return;
+
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
@@ -123,8 +126,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     {
         $id = $this->getRequest()->getParam('id');
         $model = Mage::getModel('contact/message')->load($id);
-        $status = $model->getStatus();
-        $answer = $model->getAnswer();
+
         if (!$model->getAnswer()) {
 
             Mage::getSingleton('adminhtml/session')->addError($this->__('An answer is empty.'));
@@ -138,6 +140,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
             $mail->setBody($model->getComment() . " " . $model->getAnswer());
             $mail->setFromName('admin');
             $mail->setType('text');
+
             try {
                 Mage::log($mail, null, 'email.log', true);
                 $model->setStatus('1');
@@ -149,7 +152,7 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
                 Mage::getSingleton('core/session')->addError('Unable to send.');
                 $this->_redirect('*/*/');
             }
-        } elseif ($model->getStatus() == '1') {
+        } elseif ($model->getStatus() == self::STATUS) {
             $this->_redirect('adminhtml/message/save/id/'.$this->getRequest()->getParam('id'));
             Mage::getSingleton('core/session')->addSuccess('You already sent your answer');
 
@@ -157,6 +160,10 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
         }
     }
 
+    /**
+     *
+     * @throws Varien_Exception
+     */
     public function messageAction()
     {
         $data = Mage::getModel('contact/message')->load($this->getRequest()->getParam('id'));
@@ -164,11 +171,14 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     }
 
     /**
+     * Mass delete messages from grid
+     *
      * @throws Varien_Exception
      */
     public function massDeleteAction()
     {
         $postIds = $this->getRequest()->getParam('contact');
+
         if (!is_array($postIds)) {
             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')
                 ->__('Please select item(s)'));
@@ -220,6 +230,8 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     }
 
     /**
+     * Export to csv
+     *
      * @throws Varien_Exception
      */
     public function exportCsvAction()
@@ -231,6 +243,8 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     }
 
     /**
+     * Export to Xml
+     *
      * @throws Varien_Exception
      */
     public function exportXmlAction()
@@ -249,7 +263,6 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     protected function _initAction()
     {
         $this->loadLayout()
-            // Make the active menu match the menu config nodes (without 'children' inbetween)
             ->_setActiveMenu('helloworld/training_contact')
             ->_title($this->__('Contact'))->_title($this->__('Message'))
             ->_addBreadcrumb($this->__('Contact'), $this->__('Message'))
@@ -259,6 +272,8 @@ class Training_Contact_Adminhtml_MessageController extends Mage_Adminhtml_Contro
     }
 
     /**
+     * Allowing access to menu item
+     *
      * @return mixed
      * @throws Varien_Exception
      */

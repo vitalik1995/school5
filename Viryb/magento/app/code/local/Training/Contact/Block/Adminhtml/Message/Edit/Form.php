@@ -10,8 +10,11 @@
 
 class Training_Contact_Block_Adminhtml_Message_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
+
     /**
-     * Init class
+     * Training_Contact_Block_Adminhtml_Message_Edit_Form constructor.
+     * @param array $args
+     * @throws Varien_Exception
      */
     public function __construct(array $args = array())
     {
@@ -89,8 +92,6 @@ class Training_Contact_Block_Adminhtml_Message_Edit_Form extends Mage_Adminhtml_
             'name'      => 'status',
             'values' => array('1' => 'Yes','0' => 'No')
         ));
-
-
 
         $form->setValues($model->getData());
         $form->setUseContainer(true);
