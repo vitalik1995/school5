@@ -1,0 +1,12 @@
+<config>
+    <modules>
+        <Training_Blogwidget>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Training_Helloworld/>
+                <Mage_Cms/>
+            </depends>
+        </Training_Blogwidget>
+    </modules>
+</config>

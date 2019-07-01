@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<widgets>
+    <blog_widget_info type="blog_widget/info" translate="blog widget" module="blog_widget">
+        <name>Top post</name>
+        <description type="desc">Interesting post</description>
+        <parameters>
+            <blog_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Blog</label>
+                <type>label</type>
+                <helper_block>
+                    <type>blog_widget/widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Post...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </blog_id>
+            <custom_text translate="label">
+                <visible>1</visible>
+                <label>Custom text</label>
+                <type>label</type>
+                <description>Enter your text</description>
+                <type>text</type>
+            </custom_text>
+            <custom_select translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Link Options</label>
+                <type>multiselect</type>
+                <value>email</value>
+                <source_model>blog_widget/options</source_model>
+            </custom_select>
+        </parameters>
+    </blog_widget_info>
+</widgets>

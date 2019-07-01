@@ -1,0 +1,36 @@
+<config>
+    <modules>
+        <Training_Blogwidget>
+            <version>0.1.0</version>
+        </Training_Blogwidget>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <blog_widget before="Mage_Adminhtml">Training_Blogwidget_Adminhtml</blog_widget>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <global>
+        <blocks>
+            <blog_widget>
+                <class>Training_Blogwidget_Block</class>
+            </blog_widget>
+        </blocks>
+        <helpers>
+            <blog_widget>
+                <class>Training_Blogwidget_Helper</class>
+            </blog_widget>
+        </helpers>
+        <models>
+            <blog_widget>
+                <class>Training_Blogwidget_Model</class>
+            </blog_widget>
+        </models>
+    </global>
+</config>
