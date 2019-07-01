@@ -26,6 +26,20 @@
                 <description>Enter your text</description>
                 <type>text</type>
             </custom_text>
+            <image translate="label">
+                <label>Image</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>label</type>
+                <helper_block>
+                    <type>blog_widget/image_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Insert Image...</open>
+                        </button>
+                    </data>
+                </helper_block>
+            </image>
             <custom_select translate="label">
                 <visible>1</visible>
                 <required>1</required>
