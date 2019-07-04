@@ -1,0 +1,11 @@
+<config>
+    <modules>
+        <Training_VirybCarrier>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Training_VirybCarrier>
+    </modules>
+</config>
