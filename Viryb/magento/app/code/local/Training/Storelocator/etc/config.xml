@@ -1,0 +1,72 @@
+<config>
+    <modules>
+        <Training_Storelocator>
+            <version>0.1.0</version>
+        </Training_Storelocator>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <storelocator before="Mage_Adminhtml">Training_Storelocator_Adminhtml</storelocator>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <storelocator>
+                    <file>storelocator/store.xml</file>
+                </storelocator>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+        <importexport module="importexport">
+            <import_entities>
+                <storelocator_store translate="label">
+                    <model_token>storelocator/import_entity_store</model_token>
+                    <label>Storelocator</label>
+                </storelocator_store>
+            </import_entities>
+        </importexport>
+
+        <models>
+            <storelocator>
+                <class>Training_Storelocator_Model</class>
+                <resourceModel>storelocator_resource</resourceModel>
+            </storelocator>
+            <storelocator_resource>
+                <class>Training_Storelocator_Model_Resource</class>
+                <entities>
+                    <store>
+                        <table>storelocator</table>
+                    </store>
+                </entities>
+            </storelocator_resource>
+        </models>
+        <resources>
+            <storelocator_setup>
+                <setup>
+                    <module>Training_Storelocator</module>
+                    <class>Training_Storelocator_Model_Resource_Setup</class>
+                </setup>
+            </storelocator_setup>
+        </resources>
+
+        <blocks>
+            <storelocator>
+                <class>Training_Storelocator_Block</class>
+            </storelocator>
+        </blocks>
+        <helpers>
+            <storelocator>
+                <class>Training_Storelocator_Helper</class>
+            </storelocator>
+        </helpers>
+    </global>
+</config>
