@@ -29,7 +29,6 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
     const ERROR_DUPLICATE_SELLER_CODE_SITE     = 'duplicateSellerCodeSite';
     const ERROR_SELLER_CODE_IS_EMPTY           = 'sellercodeIsEmpty';
     const ERROR_VALUE_IS_REQUIRED              = 'valueIsRequired';
-    const ERROR_INVALID_COUNTRY                = 'invalidCountry';
     const ERROR_SELLER_CODE_NOT_FOUND          = 'sellerCodeNotFound';
 
     /**
@@ -42,7 +41,6 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
         self::ERROR_DUPLICATE_SELLER_CODE_SITE => 'Seller Code is duplicated in import file',
         self::ERROR_SELLER_CODE_IS_EMPTY       => 'Seller Code is not specified',
         self::ERROR_VALUE_IS_REQUIRED          => "Required attribute '%s' has an empty value",
-        self::ERROR_INVALID_COUNTRY            => "Invalid country code",
         self::ERROR_SELLER_CODE_NOT_FOUND      => 'Seller code  is not found',
 
     );
@@ -191,7 +189,7 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
     {
         $resource = Mage::getModel('storelocator/store');
         $table = $resource->getResource()->getEntityTable();
-        $nextEntityId = Mage::getResourceHelper('storelocator')->getNextAutoincrement($table);
+        $nextEntityId = Mage::getResourceHelper('importexport')->getNextAutoincrement($table);
 
         while ($bunch = $this->_dataSourceModel->getNextBunch()) {
             $entityRowsIn = array();
