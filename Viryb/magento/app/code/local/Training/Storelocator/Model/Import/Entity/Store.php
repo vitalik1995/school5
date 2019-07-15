@@ -15,6 +15,9 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
      */
     const SELLER_CODE = 'seller_code';
 
+    /**
+     * const CONTACT_EMAIL
+     */
     const CONTACT_EMAIL = 'contact_email';
 
     /**
@@ -23,11 +26,16 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
     const TABLE_ENTITY = 'storelocator';
 
     /**
+     * const ENTITY_TYPE_CODE
+     */
+    const ENTITY_TYPE_CODE = 'storelocator_store';
+
+    /**
      * Error codes.
      */
     const ERROR_INVALID_EMAIL                  = 'invalidEmail';
     const ERROR_DUPLICATE_SELLER_CODE_SITE     = 'duplicateSellerCodeSite';
-    const ERROR_SELLER_CODE_IS_EMPTY           = 'sellercodeIsEmpty';
+    const ERROR_SELLER_CODE_IS_EMPTY           = 'sellerCodeIsEmpty';
     const ERROR_VALUE_IS_REQUIRED              = 'valueIsRequired';
     const ERROR_SELLER_CODE_NOT_FOUND          = 'sellerCodeNotFound';
 
@@ -119,7 +127,9 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
     {
         $options = array();
 
-        if ($attribute->usesSource()) {
+        if (!$attribute->usesSource()) {
+        return $options;
+        }
             // merge global entity index value attributes
             $indexValAttrs = array_merge($indexValAttrs, $this->_indexValueAttributes);
 
@@ -139,8 +149,8 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
             } catch (Exception $e) {
                 // ignore exceptions connected with source models
             }
-        }
-        return $options;
+
+       return $options;
     }
     /**
      * Get existing stores
@@ -174,8 +184,9 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
         } else {
             $this->_saveStores();
 
-            return true;
         }
+
+        return true;
     }
 
 
@@ -405,6 +416,6 @@ class Training_Storelocator_Model_Import_Entity_Store extends Mage_ImportExport_
      */
     public function getEntityTypeCode()
     {
-        return 'storelocator_store';
+        return self::ENTITY_TYPE_CODE;
     }
 }

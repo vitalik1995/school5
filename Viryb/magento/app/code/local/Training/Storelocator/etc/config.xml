@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Training_Storelocator>
-            <version>0.1.0</version>
+            <version>0.1.5</version>
         </Training_Storelocator>
     </modules>
     <admin>
@@ -46,6 +46,24 @@
                     <store>
                         <table>storelocator</table>
                     </store>
+                    <store_datetime>
+                        <table>storelocator_datetime</table>
+                    </store_datetime>
+                    <store_decimal>
+                        <table>storelocator_decimal</table>
+                    </store_decimal>
+                    <store_int>
+                        <table>storelocator_int</table>
+                    </store_int>
+                    <store_text>
+                        <table>storelocator_text</table>
+                    </store_text>
+                    <store_varchar>
+                        <table>storelocator_varchar</table>
+                    </store_varchar>
+                    <store_char>
+                        <table>storelocator_char</table>
+                    </store_char>
                 </entities>
             </storelocator_resource>
         </models>
